@@ -4,6 +4,9 @@ import "./globals.css";
 import Auth from "@/components/auth/Auth";
 import NavBar from "@/components/NavBar";
 import { isAuthenticated } from "@/utils/amplify-utils";
+import Hero from "@/components/Hero";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +32,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={geistMono.className}>
         <NavBar isSignedIn={await isAuthenticated()} />
+
         <Auth>{children}</Auth>
       </body>
     </html>

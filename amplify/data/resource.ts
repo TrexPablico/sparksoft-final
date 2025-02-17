@@ -11,7 +11,7 @@ const schema = a.schema({
     .model({
       title: a.string().required(),
       description: a.string().required(),
-      category: a.string().required(),
+
       owner: a
         .string()
         .authorization((auth) => auth.owner().to(["read", "delete"])),
@@ -19,6 +19,7 @@ const schema = a.schema({
     .authorization((allow) => [
       allow.guest().to(["read"]), // Assuming 'everyone' is the correct method
       allow.owner(),
+      allow.publicApiKey().to(["read"]),
     ]),
 });
 
